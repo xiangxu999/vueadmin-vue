@@ -8,9 +8,11 @@ import axios from 'axios'
 
 
 
-Vue.use(ElementUI, { size: 'mini'});
+Vue.use(ElementUI);
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
+
+require("./mock")
 
 new Vue({
   router,
