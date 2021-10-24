@@ -1,5 +1,5 @@
 <template>
-  <div>首页</div>
+  <div>主面板</div>
 </template>
 
 <script>
@@ -9,5 +9,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

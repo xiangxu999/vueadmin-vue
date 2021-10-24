@@ -2,7 +2,7 @@
   <el-row type="flex" class="row-bg" justify="center">
     <el-col :xl="6" :lg="7">
       <h2>欢迎来到VueAdmin管理系统</h2>
-      <el-image :src="require('@/assets/logo.png')" style="height: 180px; width: 180px;"></el-image>
+      <el-image :src="require('@/assets/logo-vite.svg')" style="height: 180px; width: 180px;"></el-image>
     </el-col>
 
     <el-col :span="1">
