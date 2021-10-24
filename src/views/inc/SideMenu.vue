@@ -3,32 +3,33 @@
       class="el-menu-vertical"
       background-color="rgb(48, 65, 86)"
       text-color="rgb(191, 203, 217)"
-      default-active="0"
+      default-active="/index"
+      :router="true"
   >
-    <el-menu-item index="0">
+    <el-menu-item index="/index">
       <template slot="title">
         <i class="el-icon-s-home"></i>
         <span slot="title">首页</span>
       </template>
     </el-menu-item>
-    <el-submenu index="1">
+    <el-submenu index="/system">
       <template slot="title">
         <i class="el-icon-s-operation"></i>
         <span>系统管理</span>
       </template>
-      <el-menu-item index="1-1">
+      <el-menu-item index="/system/user">
         <template slot="title">
           <i class="el-icon-s-custom"></i>
           <span slot="title">用户管理</span>
         </template>
       </el-menu-item>
-      <el-menu-item index="1-2">
+      <el-menu-item index="/system/role">
         <template slot="title">
           <i class="el-icon-rank"></i>
           <span slot="title">角色管理</span>
         </template>
       </el-menu-item>
-      <el-menu-item index="1-3">
+      <el-menu-item index="/system/menu">
         <template slot="title">
           <i class="el-icon-menu"></i>
           <span slot="title">菜单管理</span>

@@ -1,12 +1,13 @@
 <template>
-  <div>首页</div>
+  <div>菜单</div>
 </template>
 
 <script>
 export default {
-  name: "Index"
+  name: "SysMenu"
 }
 </script>
 
 <style scoped>
+
 </style>

@@ -1,12 +1,13 @@
 <template>
-  <div>首页</div>
+  <div>用户</div>
 </template>
 
 <script>
 export default {
-  name: "Index"
+  name: "SysUser"
 }
 </script>
 
 <style scoped>
+
 </style>
