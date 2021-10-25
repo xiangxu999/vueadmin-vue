@@ -60,7 +60,7 @@ router.beforeEach((to, from, next) => {
                 if (menu.children) {
                     menu.children.forEach(item => {
                         // 转换为路由
-                        let route = menuToRouTe(item)
+                        let route = menuToRoute(item)
                         // 把路由添加到路由管理中
                         if (route) {
                             newRoutes[0].children.push(route)
@@ -80,12 +80,12 @@ router.beforeEach((to, from, next) => {
  * @param menu
  * @returns {null}
  */
-const menuToRouTe = (menu) => {
+const menuToRoute = (menu) => {
     if (!menu.component) {
         return null
     }
 
-    let route = {
+    return {
         name: menu.name,
         path: menu.path,
         component: () => import('@/' + menu.component + '.vue'),
@@ -94,7 +94,6 @@ const menuToRouTe = (menu) => {
             title: menu.title
         }
     }
-    return route
 
 }
 

@@ -3,21 +3,22 @@
       class="el-menu-vertical"
       background-color="rgb(48, 65, 86)"
       text-color="rgb(191, 203, 217)"
-      default-active="/index"
+      :default-active="this.$store.state.menu.editableTabsValue"
       :router="true"
   >
-    <el-menu-item index="/index">
+    <el-menu-item index="Index" route="/index" @click="selectMenu({name:'Index', title:'首页'})">
       <template slot="title">
         <i class="el-icon-s-home"></i>
         <span slot="title">首页</span>
       </template>
     </el-menu-item>
-    <el-submenu :index="menu.path" v-for="menu in menuList">
+    <el-submenu :index="menu.name" v-for="menu in menuList" :key="menu.name">
       <template slot="title">
         <i :class="menu.icon"></i>
         <span>{{ menu.title }}</span>
       </template>
-      <el-menu-item :index="item.path" v-for="item in menu.children">
+      <el-menu-item :index="item.name" :key="item.name" :route="item.path" v-for="item in menu.children"
+                    @click="selectMenu(item)">
         <template slot="title">
           <i :class="item.icon"></i>
           <span slot="title">{{ item.title }}</span>
@@ -40,11 +41,15 @@ export default {
       }
     }
   },
-  methods: {}
+  methods: {
+    selectMenu(item) {
+      this.$store.commit('addTab', item)
+    }
+  }
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .el-menu-vertical {
   height: 100%;
   overflow: hidden;
