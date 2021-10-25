@@ -2,51 +2,100 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
 import Home from '../views/Home'
+import axios from "axios";
+import store from '../store'
 
 const Index = () => import('../views/Index')
-const Menu = () => import('../views/sys/SysMenu')
-const Role = () => import('../views/sys/SysRole')
-const User = () => import('../views/sys/SysUser')
+const UserCenter = () => import('../views/UserCenter')
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home,
-    children: [
-      {
-        path: '/index',
-        name: 'Index',
-        component: Index
-      },
-      {
-        path: '/system/menu',
-        name: 'Menu',
-        component: Menu
-      },
-      {
-        path: '/system/Role',
-        name: 'Role',
-        component: Role
-      },
-      {
-        path: '/system/User',
-        name: 'User',
-        component: User
-      }
-    ]
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: Login
-  }
+    {
+        path: '/',
+        name: 'Home',
+        component: Home,
+        children: [
+            {
+                path: '/index',
+                name: 'Index',
+                component: Index
+            },
+            {
+                path: '/user/center',
+                name: 'UserCenter',
+                component: UserCenter
+            }
+        ]
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: Login
+    }
 ]
 
 const router = new VueRouter({
-  routes
+    routes
 })
+
+router.beforeEach((to, from, next) => {
+
+    if (!store.state.menu.hasRoute) {
+        axios.get('/system/menu/nav', {
+            headers: {
+                authorization: localStorage.getItem('token')
+            }
+        }).then(res => {
+            // 菜单
+            store.commit('setMenu', res.data.data.nav)
+            // 权限
+            store.commit('setAuth', res.data.data.authorities)
+
+
+            // 动态绑定路由
+            let newRoutes = router.options.routes
+
+            res.data.data.nav.forEach(menu => {
+                if (menu.children) {
+                    menu.children.forEach(item => {
+                        // 转换为路由
+                        let route = menuToRouTe(item)
+                        // 把路由添加到路由管理中
+                        if (route) {
+                            newRoutes[0].children.push(route)
+                        }
+                    })
+                }
+            })
+            router.addRoutes(newRoutes)
+            store.commit("changeRouteStatus", true)
+        })
+    }
+    next()
+})
+
+/**
+ * 导航转为路由
+ * @param menu
+ * @returns {null}
+ */
+const menuToRouTe = (menu) => {
+    if (!menu.component) {
+        return null
+    }
+
+    let route = {
+        name: menu.name,
+        path: menu.path,
+        component: () => import('@/' + menu.component + '.vue'),
+        meta: {
+            icon: menu.icon,
+            title: menu.title
+        }
+    }
+    return route
+
+}
 
 export default router

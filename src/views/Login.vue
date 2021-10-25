@@ -64,7 +64,7 @@ export default {
         if (valid) {
           this.$axios.post('/login', this.loginForm).then(res => {
             const jwt = res.headers['authorization']
-            this.$store.commit('SET_TOKEN', jwt)
+            this.$store.commit('setToken', jwt)
             this.$router.push("/index")
           })
         } else {

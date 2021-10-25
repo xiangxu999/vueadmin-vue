@@ -5,6 +5,7 @@
 </template>
 
 <style>
+  @import "./assets/scss/reset.scss";
   html, body, #app {
     font-family: 'Helvetica Neue', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft Yahei', sans-serif;
     height: 100%;

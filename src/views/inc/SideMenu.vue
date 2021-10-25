@@ -12,39 +12,15 @@
         <span slot="title">首页</span>
       </template>
     </el-menu-item>
-    <el-submenu index="/system">
+    <el-submenu :index="menu.path" v-for="menu in menuList">
       <template slot="title">
-        <i class="el-icon-s-operation"></i>
-        <span>系统管理</span>
+        <i :class="menu.icon"></i>
+        <span>{{ menu.title }}</span>
       </template>
-      <el-menu-item index="/system/user">
+      <el-menu-item :index="item.path" v-for="item in menu.children">
         <template slot="title">
-          <i class="el-icon-s-custom"></i>
-          <span slot="title">用户管理</span>
-        </template>
-      </el-menu-item>
-      <el-menu-item index="/system/role">
-        <template slot="title">
-          <i class="el-icon-rank"></i>
-          <span slot="title">角色管理</span>
-        </template>
-      </el-menu-item>
-      <el-menu-item index="/system/menu">
-        <template slot="title">
-          <i class="el-icon-menu"></i>
-          <span slot="title">菜单管理</span>
-        </template>
-      </el-menu-item>
-    </el-submenu>
-    <el-submenu index="2">
-      <template slot="title">
-        <i class="el-icon-s-tools"></i>
-        <span>系统工具</span>
-      </template>
-      <el-menu-item index="2-2">
-        <template slot="title">
-          <i class="el-icon-s-order"></i>
-          <span slot="title">数字字典</span>
+          <i :class="item.icon"></i>
+          <span slot="title">{{ item.title }}</span>
         </template>
       </el-menu-item>
     </el-submenu>
@@ -53,19 +29,32 @@
 
 <script>
 export default {
-  name: "SideMenu"
+  name: "SideMenu",
+  data() {
+    return {}
+  },
+  computed: {
+    menuList: {
+      get() {
+        return this.$store.state.menu.menuList
+      }
+    }
+  },
+  methods: {}
 }
 </script>
 
 <style scoped>
-  .el-menu-vertical{
-    height: 100%;
-    overflow: hidden;
-  }
-  .el-menu-item:hover{
-    background-color: rgb(38, 52, 69) !important;
-  }
-  .el-menu-item.is-active {
-    background-color: rgb(38, 52, 69) !important;
-  }
+.el-menu-vertical {
+  height: 100%;
+  overflow: hidden;
+}
+
+.el-menu-item:hover {
+  background-color: rgb(38, 52, 69) !important;
+}
+
+.el-menu-item.is-active {
+  background-color: rgb(38, 52, 69) !important;
+}
 </style>

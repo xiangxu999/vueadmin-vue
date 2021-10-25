@@ -19,9 +19,8 @@ request.interceptors.request.use(config => {
 
 request.interceptors.response.use(response => {
     let res = response.data
-
     if (res.code === 200) {
-        return response;
+        return response
     } else {
         Element.Message.error(!res.msg ? '系统异常' : res.msg)
         return Promise.reject(response.data.msg)
