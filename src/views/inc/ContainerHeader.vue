@@ -38,6 +38,8 @@ export default {
       })
     },
     toUserCenter() {
+      // todo 存在一定问题
+      this.$store.commit("addTab", {name: 'UserCenter', title: '个人中心'})
       this.$router.push('/user/center')
     },
     logout() {
@@ -46,6 +48,8 @@ export default {
         sessionStorage.clear()
 
         this.$store.commit('resetState')
+
+        this.$store.commit('resetMenu')
 
         this.$router.push('/login')
       })

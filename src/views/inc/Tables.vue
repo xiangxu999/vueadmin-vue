@@ -11,8 +11,6 @@
 </template>
 
 <script>
-import router from '../../router'
-
 export default {
   name: "Tables",
   data() {
@@ -38,12 +36,7 @@ export default {
   },
   methods: {
     clickTab(target) {
-      console.log(target.name)
-      console.log(this.$store.state.menu.editableTabsValue)
-      if (this.$store.state.menu.editableTabsValue !== target.name) {
-        console.log(111)
-        this.$router.push({name: target.name})
-      }
+      this.$router.push({name: target.name})
     },
     removeTab(targetName) {
       let tabs = this.editableTabs;

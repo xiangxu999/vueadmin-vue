@@ -9,7 +9,9 @@
       </el-header>
       <el-main>
         <tables></tables>
-        <router-view></router-view>
+        <div style="margin: 0 10px">
+          <router-view></router-view>
+        </div>
       </el-main>
     </el-container>
   </el-container>
@@ -30,7 +32,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .el-container {
   padding: 0;
   margin: 0;
@@ -41,6 +43,7 @@ export default {
   color: #333;
   text-align: center;
   line-height: 60px;
+  box-shadow: 0 1px 4px #e4e7ed;
 }
 
 .el-aside {
@@ -50,9 +53,7 @@ export default {
 }
 
 .el-main {
-  /*background-color: #E9EEF3;*/
   color: #333;
-  text-align: center;
   padding: 0 !important;
 }
 </style>

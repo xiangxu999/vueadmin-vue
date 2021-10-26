@@ -12,8 +12,7 @@ export default {
         editableTabs: [
             {
                 title: '首页',
-                name: 'Index',
-                path: '/index'
+                name: 'Index'
             }
         ],
     },
@@ -39,6 +38,18 @@ export default {
                 })
             }
             state.editableTabsValue = tab.name
+        },
+        resetMenu(state) {
+            state.menuList = []
+            state.permList = []
+            state.hasRoute = false
+            state.editableTabsValue = 'Index'
+            state.editableTabs = [
+                {
+                    title: '首页',
+                    name: 'Index'
+                }
+            ]
         }
     },
     actions: {},
