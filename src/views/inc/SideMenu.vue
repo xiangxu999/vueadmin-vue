@@ -62,4 +62,5 @@ export default {
 .el-menu-item.is-active {
   background-color: rgb(38, 52, 69) !important;
 }
+
 </style>

@@ -34,7 +34,7 @@
 
       <el-table-column label="头像" align="center">
         <template slot-scope="scope">
-          <el-avatar size="mini" :src="scope.row.avatar"></el-avatar>
+          <el-avatar size="small" :src="scope.row.avatar"></el-avatar>
         </template>
       </el-table-column>
 

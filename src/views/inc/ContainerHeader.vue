@@ -1,18 +1,24 @@
 <template>
-  <div class="header-avatar">
-    <el-avatar size="medium" :src="userInfo.avatar"></el-avatar>
-    <el-dropdown>
+  <div style="height: 100%">
+    <div class="header-bread">
+      <i class="el-icon-edit"></i>
+    </div>
+
+    <div class="header-avatar">
+      <el-avatar size="medium" :src="userInfo.avatar"></el-avatar>
+      <el-dropdown>
 						<span class="el-dropdown-link">
 						{{ userInfo.userName }}<i class="el-icon-arrow-down el-icon--right"></i>
 						</span>
-      <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item @click.native="toUserCenter">
-          个人中心
-        </el-dropdown-item>
-        <el-dropdown-item @click.native="logout">退出</el-dropdown-item>
-      </el-dropdown-menu>
-    </el-dropdown>
-    <el-link href="https://www.xiangxu999.com" target="_blank">网站</el-link>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item @click.native="toUserCenter">
+            个人中心
+          </el-dropdown-item>
+          <el-dropdown-item @click.native="logout">退出</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+      <el-link href="https://www.xiangxu999.com" target="_blank">网站</el-link>
+    </div>
   </div>
 </template>
 
@@ -58,7 +64,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.header-bread {
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .header-avatar {
   float: right;
   width: 200px;
