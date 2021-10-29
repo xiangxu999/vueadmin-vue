@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-aside width="200px">
+    <el-aside :width="this.$store.state.menu.menuWidth">
       <side-menu></side-menu>
     </el-aside>
     <el-container>
@@ -47,7 +47,6 @@ export default {
 }
 
 .el-aside {
-  background-color: #D3DCE6;
   color: #333;
   line-height: 200px;
 }

@@ -5,6 +5,7 @@
       text-color="rgb(191, 203, 217)"
       :default-active="this.$store.state.menu.editableTabsValue"
       :router="true"
+      :collapse="isCollapse"
   >
     <el-menu-item index="Index" route="/index" @click="selectMenu({name:'Index', title:'首页'})">
       <template slot="title">
@@ -38,6 +39,11 @@ export default {
     menuList: {
       get() {
         return this.$store.state.menu.menuList
+      }
+    },
+    isCollapse: {
+      get() {
+        return this.$store.state.menu.isCollapse
       }
     }
   },

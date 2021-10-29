@@ -5,7 +5,7 @@ import store from './store'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import request from './axios'
-
+import global from './globalFun'
 
 
 Vue.use(ElementUI);
@@ -15,7 +15,7 @@ Vue.prototype.$axios = request
 require("./mock")
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount('#app')

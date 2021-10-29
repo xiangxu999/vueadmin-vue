@@ -6,8 +6,11 @@ Vue.use(Vuex)
 export default {
     state: {
         menuList: [],
-        permList: [],
+        permList: ['system:user:save'],
         hasRoute: false,
+        isCollapse: false,
+        iconMenu: 'el-icon-s-fold',
+        menuWidth: '200px',
         editableTabsValue: 'Index',
         editableTabs: [
             {
@@ -50,6 +53,16 @@ export default {
                     name: 'Index'
                 }
             ]
+        },
+        changeMenuStatus(state) {
+            state.isCollapse = !state.isCollapse
+            if (state.isCollapse) {
+                state.iconMenu = 'el-icon-s-unfold'
+                state.menuWidth = '70px'
+            } else {
+                state.iconMenu = 'el-icon-s-fold'
+                state.menuWidth = '200px'
+            }
         }
     },
     actions: {},

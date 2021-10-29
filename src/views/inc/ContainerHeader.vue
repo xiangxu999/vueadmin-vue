@@ -1,7 +1,17 @@
 <template>
-  <div style="height: 100%">
+  <div>
     <div class="header-bread">
-      <i class="el-icon-edit"></i>
+      <div style="margin-left: -10px;cursor: pointer;">
+        <i :class="this.$store.state.menu.iconMenu" @click="changeMenuStatus"></i>
+      </div>
+      <div style="margin-left: 15px">
+        <el-breadcrumb separator="/">
+          <el-breadcrumb-item>首页</el-breadcrumb-item>
+          <el-breadcrumb-item>活动管理</el-breadcrumb-item>
+          <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+          <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+        </el-breadcrumb>
+      </div>
     </div>
 
     <div class="header-avatar">
@@ -59,6 +69,9 @@ export default {
 
         this.$router.push('/login')
       })
+    },
+    changeMenuStatus() {
+      this.$store.commit("changeMenuStatus")
     }
   }
 }
@@ -68,8 +81,9 @@ export default {
 .header-bread {
   float: left;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  font-size: 20px
 }
 
 .header-avatar {
