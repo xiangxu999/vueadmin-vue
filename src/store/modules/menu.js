@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export default {
     state: {
         menuList: [],
-        permList: ['system:user:save'],
+        permList: [],
         hasRoute: false,
         isCollapse: false,
         iconMenu: 'el-icon-s-fold',

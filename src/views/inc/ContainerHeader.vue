@@ -18,7 +18,7 @@
       <el-avatar size="medium" :src="userInfo.avatar"></el-avatar>
       <el-dropdown>
 						<span class="el-dropdown-link">
-						{{ userInfo.userName }}<i class="el-icon-arrow-down el-icon--right"></i>
+						{{ userInfo.username }}<i class="el-icon-arrow-down el-icon--right"></i>
 						</span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item @click.native="toUserCenter">
@@ -39,7 +39,7 @@ export default {
     return {
       userInfo: {
         id: null,
-        userName: null,
+        username: null,
         avatar: null
       }
     }
@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     getUserInfo() {
-      this.$axios.get('/sys/userInfo').then(res => {
+      this.$axios.get('/system/userInfo').then(res => {
         this.userInfo = res.data.data
       })
     },

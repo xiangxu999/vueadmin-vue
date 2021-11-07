@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="list">
     <el-form :inline="true" size="mini">
       <el-form-item>
         <!--搜索部分 todo后续完成 -->
@@ -128,6 +128,8 @@
 </template>
 
 <script>
+import {showFullScreenLoading, hideFullScreenLoading} from '../../utils/loading'
+
 export default {
   name: "SysMenu",
   data() {
@@ -169,6 +171,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
+          showFullScreenLoading('.list')
           this.$axios.post('/system/menu/' + (this.editForm.id ? 'update' : 'save'), this.editForm)
               .then(res => {
                 this.$message({
@@ -179,8 +182,8 @@ export default {
                     this.getMenuTree()
                   }
                 });
-
                 this.dialogVisible = false
+                hideFullScreenLoading()
               })
         } else {
           console.log('error submit!!');

@@ -267,7 +267,7 @@ export default {
 
                 this.$message({
                   showClose: true,
-                  message: '恭喜你，操作成功',
+                  message: '操作成功',
                   type: 'success',
                   onClose: () => {
                     this.getUserList()
@@ -306,7 +306,7 @@ export default {
       this.$axios.post("/system/user/delete", ids).then(res => {
         this.$message({
           showClose: true,
-          message: '恭喜你，操作成功',
+          message: '操作成功',
           type: 'success',
           onClose: () => {
             this.getUserList()
@@ -314,7 +314,6 @@ export default {
         });
       })
     },
-
     roleHandle(id) {
       this.roleDialogFormVisible = true
 
@@ -325,7 +324,6 @@ export default {
         res.data.data.roles.forEach(row => {
           roleIds.push(row.id)
         })
-
         this.$refs.roleTree.setCheckedKeys(roleIds)
       })
     },
@@ -337,13 +335,12 @@ export default {
       this.$axios.post('/system/user/role/' + this.roleForm.id, roleIds).then(res => {
         this.$message({
           showClose: true,
-          message: '恭喜你，操作成功',
+          message: '操作成功',
           type: 'success',
           onClose: () => {
             this.getUserList()
           }
         });
-
         this.roleDialogFormVisible = false
       })
     },
@@ -357,7 +354,7 @@ export default {
         this.$axios.post("/system/user/repass", id).then(res => {
           this.$message({
             showClose: true,
-            message: '恭喜你，操作成功',
+            message: '操作成功',
             type: 'success',
             onClose: () => {
             }

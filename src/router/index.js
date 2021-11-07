@@ -55,7 +55,7 @@ router.beforeEach((to, from, next) => {
             // 菜单
             store.commit('setMenu', res.data.data.nav)
             // 权限
-            // store.commit('setAuth', res.data.data.authorities)
+            store.commit('setAuth', res.data.data.authorities)
 
 
             // 动态绑定路由

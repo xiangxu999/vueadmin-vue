@@ -42,12 +42,12 @@
           <el-button size="mini" type="text" @click="permHandle(scope.row.id)">分配权限</el-button>
           <el-divider direction="vertical"></el-divider>
 
-          <el-button type="text" @click="editHandle(scope.row.id)">编辑</el-button>
+          <el-button size="mini" type="text" @click="editHandle(scope.row.id)">编辑</el-button>
           <el-divider direction="vertical"></el-divider>
 
           <template>
             <el-popconfirm title="这是一段内容确定删除吗？" @confirm="delHandle(scope.row.id)">
-              <el-button type="text" slot="reference">删除</el-button>
+              <el-button size="mini" type="text" slot="reference">删除</el-button>
             </el-popconfirm>
           </template>
 
@@ -214,7 +214,6 @@ export default {
     handleClose() {
       this.resetForm('editForm')
     },
-
     getRoleList() {
       this.$axios.get("/system/role/list", {
         params: {
@@ -238,7 +237,7 @@ export default {
 
                 this.$message({
                   showClose: true,
-                  message: '恭喜你，操作成功',
+                  message: '操作成功',
                   type: 'success',
                   onClose: () => {
                     this.getRoleList()
@@ -289,10 +288,10 @@ export default {
     permHandle(id) {
       this.permDialogVisible = true
 
-      this.$axios.get("/system/role/info/" + id).then(res => {
-
+      this.$axios.get("/system/role/perm/" + id).then(res => {
         this.$refs.permTree.setCheckedKeys(res.data.data.menuIds)
         this.permForm = res.data.data
+        console.log(this.permForm)
       })
     },
 
